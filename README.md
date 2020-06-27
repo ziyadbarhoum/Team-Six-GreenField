@@ -1,2 +1,2 @@
 # Team-Six-GreenField
-Projject
+Project
