@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
+const Schema = mongoose.Schema;
+
 
 var db = mongoose.connection;
 
@@ -11,12 +13,37 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
-});
+const userSchema = new Schema({
+  username: {type: String,
+      required: true,
+      unique: true,
+      minlength: 5
+  },
+  phone: {type: Number,
+      required: true,
+      unique: true,
+      minlength: 10
+  },
+  email: {type: String,
+      required: true,
+      unique: true,
+      minlength: 5
+  },
+  price:{type: Number,
+      required: true,
+  },
+  subject: {type: String,
+      required: true
+  },
+  city: {type: String,
+      required: true}
 
-var Item = mongoose.model('Item', itemSchema);
+  });
+
+
+  const User = mongoose.model('User', userSchema);
+
+
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {
