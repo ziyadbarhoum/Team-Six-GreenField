@@ -14,7 +14,7 @@ db.once('open', function() {
 });
 
 const userSchema = new Schema({
-  username: {type: String,
+      name: {type: String,
       required: true,
       unique: true,
       minlength: 5
@@ -40,9 +40,20 @@ const userSchema = new Schema({
 
   });
 
+  const usernameSchema = new Schema({
+    name: {type: String,
+    required: true,
+    unique: true,
+    minlength: 5
+    },
+    password: {type: String,
+    required: true,
+    minlength: 8}
+
+  });
 
   const User = mongoose.model('User', userSchema);
-
+  const Username = mongoose.model('Username', usernameSchema)
 
 
 var selectAll = function(callback) {
