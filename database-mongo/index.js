@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
-const Schema = mongoose.Schema;
-
+mongoose.connect('mongodb://localhost/teachersDataBase');
 
 var db = mongoose.connection;
 
@@ -13,57 +11,82 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-const userSchema = new Schema({
-      name: {type: String,
-      required: true,
-      unique: true,
-      minlength: 5
-  },
-  phone: {type: Number,
-      required: true,
-      unique: true,
-      minlength: 10
-  },
+var obj1={
+  email:"defult@sura.com",
+  password:"defult"
+}
+
+
+var obj2={
+  phoneNum : 123,
+      name : "String" ,
+      price :1,
+      Email :"String@",
+      Discription:String,
+      place:"String",
+      subject:"String"
+}
+
+const authoSchema =mongoose.Schema({
+
   email: {type: String,
       required: true,
       unique: true,
       minlength: 5
   },
-  price:{type: Number,
+  password:{type: String,
       required: true,
-  },
-  subject: {type: String,
-      required: true
-  },
-  city: {type: String,
-      required: true}
+       minlength: 8
+  }
+});
 
+var teacherSchema= mongoose.Schema({
+      phoneNum : Number,
+      name : { type: String, required: true, unique: true },
+      price :{ type: String, required: true},
+      Email :{ type: String, index: true, unique: true, required: true },
+      Discription:String,
+      place:{ type: String, required: true, unique: true },
+      subject:{ type: String, required: true, unique: true }
   });
 
-  const usernameSchema = new Schema({
-    name: {type: String,
-    required: true,
-    unique: true,
-    minlength: 5
-    },
-    password: {type: String,
-    required: true,
-    minlength: 8}
-
-  });
-
-  const User = mongoose.model('User', userSchema);
-  const Username = mongoose.model('Username', usernameSchema)
-
-
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+const Teacher = mongoose.model('Teacher', teacherSchema);
+const Autho = mongoose.model('Autho', authoSchema);
+//select all from teachers
+var selectAllfromTeacher = function(callback) {
+  Teacher.find({}, function(err, teachers) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, teachers);
+    }
+  });
+};
+// insert into autho schema 
+var insertIntoAutho = function(callback) {
+  Autho.insertOne(obj1, function(err, data) {
+    if(err) {
+      callback(err, null);
+    } else {
+      callback(null, data);
+    }
+  });
+};
+// insert into Teacher schema 
+var insertIntoTeacher = function(callback) {
+  Teacher.insertOne(obj2, function(err, data) {
+    if(err) {
+      callback(err, null);
+    } else {
+      callback(null, data);
     }
   });
 };
 
-module.exports.selectAll = selectAll;
+
+
+
+
+module.exports.insertIntoAutho = insertIntoAutho;
+module.exports.insertIntoTeacher = insertIntoTeacher;
+module.exports.selectAllfromTeacher = selectAllfromTeacher;
