@@ -1,2 +1,0 @@
-# Team-Six-GreenField
-Project
