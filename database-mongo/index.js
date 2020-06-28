@@ -18,12 +18,12 @@ var itemSchema = mongoose.Schema({
 
 var techear= new schema({
       phoneNum : Number,
-      name : String ,
-      price :Number,
-      Email :String,
+      name : { type: String, required: true, unique: true },
+      price :{ type: String, required: true},
+      Email :{ type: String, index: true, unique: true, required: true },
       Discription:String,
-      place:String,
-      subject:String
+      place:{ type: String, required: true, unique: true },
+      subject:{ type: String, required: true, unique: true }
   });
 
 var Item = mongoose.model('Item', itemSchema);
