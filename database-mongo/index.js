@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/teachersDataBase');
 
 var db = mongoose.connection;
 
@@ -11,7 +11,23 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-const authoSchema = new Schema({
+var obj1={
+  email:"defult@sura.com",
+  password:"defult"
+}
+
+
+var obj2={
+  phoneNum : 123,
+      name : "String" ,
+      price :1,
+      Email :"String@",
+      Discription:String,
+      place:"String",
+      subject:"String"
+}
+
+const authoSchema =mongoose.Schema({
 
   email: {type: String,
       required: true,
@@ -24,21 +40,15 @@ const authoSchema = new Schema({
   }
 });
 
-var obj1={
-  email:"defult@sura.com",
-  password:"defult"
-}
-
-
-var obj2={
-  name:"sura",
-  phone:"0000",
-  place:"irbed",
-  subject:"arabic",
-  description:"Anything",
-  price:"12$",
-  email:"sura@sura.com"
-}
+var teacherSchema= mongoose.Schema({
+      phoneNum : Number,
+      name : { type: String, required: true, unique: true },
+      price :{ type: String, required: true},
+      Email :{ type: String, index: true, unique: true, required: true },
+      Discription:String,
+      place:{ type: String, required: true, unique: true },
+      subject:{ type: String, required: true, unique: true }
+  });
 
 const Teacher = mongoose.model('Teacher', teacherSchema);
 const Autho = mongoose.model('Autho', authoSchema);
