@@ -40,17 +40,6 @@ const authoSchema =mongoose.Schema({
   }
 });
 
-// var teacherSchema= mongoose.Schema({
-//       phoneNum : Number,
-//       name : { type: String, required: true, unique: true },
-//       price :{ type: String, required: true},
-//       Email :{ type: String, index: true, unique: true, required: true },
-//       Discription:String,
-//       place:{ type: String, required: true, unique: true },
-//       subject:{ type: String, required: true, unique: true }
-//   });
-
-const Teacher = mongoose.model('Teacher', teacherSchema);
 const Autho = mongoose.model('Autho', authoSchema);
 //select all from teachers
 var selectAllfromTeacher = function(callback) {
