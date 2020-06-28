@@ -11,12 +11,20 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
-});
+const teacherSchema = new Schema({
 
-var Item = mongoose.model('Item', itemSchema);
+  email: {type: String,
+      required: true,
+      unique: true,
+      minlength: 5
+  },
+  password:{type: String,
+      required: true,
+       minlength: 8
+  });
+
+
+const Teacher = mongoose.model('Teacher', teacherSchema);
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {
