@@ -16,6 +16,16 @@ var itemSchema = mongoose.Schema({
   description: String
 });
 
+var techear= new schema({
+      phoneNum : Number,
+      name : String ,
+      price :Number,
+      Email :String,
+      Discription:String,
+      place:String,
+      subject:String
+  });
+
 var Item = mongoose.model('Item', itemSchema);
 
 var selectAll = function(callback) {
