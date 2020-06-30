@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/teachersDataBase');
-var Schema= mongoose.Schema
+
+var Schema= mongoose.Schema;
+// connect data base and check the connection
 var db = mongoose.connection;
 db.on('error', function() {
   console.log('mongoose connection error');
@@ -9,7 +12,7 @@ db.on('error', function() {
 db.once('open', function() {
   console.log('mongoose connected successfully');
 });
-
+// create autho schema contain informations of users
 const authoSchema =new Schema({
 
   email: {type: String,
@@ -23,62 +26,74 @@ const authoSchema =new Schema({
   }
 });
 
-var teacherSchema= new Schema({
+
+// var teacherSchema= new Schema({
+//       phoneNum : Number,
+//       name : { type: String, required: true },
+//       price :{ type: String, required: true},
+//       Email :{ type: String,  unique: true },
+//       Discription:String,
+//       place: String ,
+//       subject: String ,
+//       create_date:{ type: Date, default: Date.now }
+//   });
+// create Adv schema contain advertising 
+
+var AdvSchema= new Schema({
       phoneNum : Number,
-      name : { type: String, required: true, unique: true },
+      name : { type: String, required: true },
       price :{ type: String, required: true},
-      Email :{ type: String, index: true, unique: true, required: true },
+      Email :{ type: String,  unique: true },
       Discription:String,
-      place:{ type: String, required: true, unique: true },
-      subject:{ type: String, required: true, unique: true }
+      place: String ,
+      subject: String ,
+      create_date:{ type: Date, default: Date.now }
   });
-
-const Teacher = mongoose.model('Teacher', teacherSchema);
+//create models
+const ADV = mongoose.model('ADV', AdvSchema);
+// const Teacher = mongoose.model('Teacher', teacherSchema);
 const Autho = mongoose.model('Autho', authoSchema);
-//select all from teachers
-var selectAllfromTeacher = function() {
-Teacher.find(function (err, data) {
-  if (err) return console.error(err);
-  console.log( data[0]._doc.name)
 
-})
-};
-//select all from Autho
-var selectAllfromAutho = function() {
-Autho.find(function (err, data) {
-  if (err) return console.error(err);
-  console.log( data[0]._doc.name)
-
-})
-};
-// insert into autho schema 
-var insertIntoAutho = function(instanse) {
-  // console.log(db.base.modelSchemas.Autho)
-    Autho.create(instanse, function (err, res) {
-          if (err) {
-            console.log('could not insert')
-            throw err
-          }
-          console.log('inserted account')
-          Autho.close()
-        })
-};
-// insert into Teacher schema 
-var insertIntoTeacher = function(instanse) {
-  Teacher.create(instanse, function (err, res) {
-          if (err) {
-            console.log('could not insert')
-            throw err
-          }
-          console.log('inserted account')
-          Teacher.close()
-        })
-};
-
-
+// export's part 
+module.exports.ADV  = ADV;
+// module.exports.Teacher = Teacher;
 module.exports.Autho  = Autho;
-module.exports.Teacher = Teacher;
 
-module.exports.insertIntoAutho = insertIntoAutho;
-module.exports.insertIntoTeacher = insertIntoTeacher;
-module.exports.selectAllfromTeacher = selectAllfromTeacher;
+// //select all from teachers
+// var selectAllfromTeacher = function() {
+// Teacher.find(function (err, data) {
+//   if (err) return console.error(err);
+//   console.log( data[0]._doc.name)
+
+// })
+// };
+
+// // insert into autho schema 
+// var insertIntoAutho = function(instanse) {
+//   // console.log(db.base.modelSchemas.Autho)
+//     Autho.create(instanse, function (err, res) {
+//           if (err) {
+//             console.log('could not insert')
+//             throw err
+//           }
+//           console.log('inserted account')
+//           Autho.close()
+//         })
+// };
+// // insert into Teacher schema 
+// var insertIntoTeacher = function(instanse) {
+//   Teacher.create(instanse, function (err, res) {
+//           if (err) {
+//             console.log('could not insert')
+//             throw err
+//           }
+//           console.log('inserted account')
+//           Teacher.close()
+//         })
+// };
+
+
+
+// module.exports.insertIntoAutho = insertIntoAutho;
+// module.exports.insertIntoTeacher = insertIntoTeacher;
+// // module.exports.selectAllfromTeacher = selectAllfromTeacher;
