@@ -15,7 +15,7 @@ const authoSchema =new Schema({
   email: {type: String,
       required: true,
       unique: true,
-      minlength: 5
+      minlength: 3,
   },
   password:{type: String,
       required: true,
@@ -43,7 +43,14 @@ Teacher.find(function (err, data) {
 
 })
 };
+//select all from Autho
+var selectAllfromAutho = function() {
+Autho.find(function (err, data) {
+  if (err) return console.error(err);
+  console.log( data[0]._doc.name)
 
+})
+};
 // insert into autho schema 
 var insertIntoAutho = function(instanse) {
   // console.log(db.base.modelSchemas.Autho)
