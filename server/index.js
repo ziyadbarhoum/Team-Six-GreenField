@@ -1,14 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var handlers = require('./handlres.js')
-
 var app = express();
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../react-client/dist'));
-
-
 app.post('/signup', handlers.signup);
 app.post('/login', handlers.login)
 app.post('/ret', handlers.getAlldatafromAuthoSchema)
@@ -17,32 +13,17 @@ app.post('/findOne', handlers.showSpecificTeacher)
 app.get('/', (req, res) => {
   res.status(200).send('Success');
 });
-
-
-
 app.listen(3110, function() {
   console.log('listening on port 3110!');
 });
-
-
-
 // var mongoose= require('mongoose')
-
 // mongoose.Promise = global.Promise;
-
 // var bodyParser = require('body-parser');
-
-
 // var router =express.Router()
-
 // var bcrypt = require("bcrypt");
-
-
 // app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(bodyParser.urlencoded({	extended:true}));
 // app.use(bodyParser.json())
-
-
 // app.post("/", (req, res, next) => {
 //   Autho.find({ email: req.body.email })
 //     .exec()
@@ -82,14 +63,10 @@ app.listen(3110, function() {
 //       }
 //     });
 // });
-
-
 // // app.post("/login",(req,res,next)=>{
 // // 	console.log(req.body)
-
 // // })
 // module.exports = router;
-
 //    Autho.find({email:req.body.email})
 //    .exec()
 //    .then(autho=>{
