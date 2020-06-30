@@ -7,8 +7,11 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.post('/signup', handlers.signup);
 app.post('/login', handlers.login)
-app.get("/", (req, res) => {
-  res.status(200).send(`Success `);
+app.post('/ret', handlers.getAlldatafromAuthoSchema)
+app.post('/mainForm', handlers.addTeacher)
+app.post('/findOne', handlers.showSpecificTeacher)
+app.get('/', (req, res) => {
+  res.status(200).send('Success');
 });
 app.listen(3110, function() {
   console.log('listening on port 3110!');
