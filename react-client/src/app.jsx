@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import SearchPage from './components/search.jsx';
+
+import SignInSignUpForm from './components/authentication.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -7,8 +10,8 @@ import {
     useRouteMatch,
     useParams
   } from "react-router-dom";
-import SearchPage from './components/search.jsx';
-import SignInSignUpForm from './components/authentication.jsx';
+
+
 
 export default class App extends React.Component {
   render () {

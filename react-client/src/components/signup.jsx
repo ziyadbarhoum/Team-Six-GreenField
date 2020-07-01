@@ -24,7 +24,7 @@ class SignUpForm extends Component {
     }
     render() {
         return (
-         <div className="FormCenter">
+        <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields">
               <div className="Form1">
                 <label className="Label1" htmlFor="Email">Email</label>
@@ -34,21 +34,22 @@ class SignUpForm extends Component {
                 <label className="Label1" htmlFor="password">Password</label>
                 <input type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
-              <div className="Form1">
               <Router>
-      <div>
-          <button className="Button1"><Link to="/signup">SIGINUP Up</button>
-     <Switch>
-          <Route path="/signup">
-            </>
+                <div>
+              <div className="Form1">
+              <button className="Button1" type='submit' value='login'> <Link to="/SignUpform">SignUp</Link></button>
+              </div>
+              <Switch>
+          <Route path="/SignUpform">
+            <TeacherForm/>
           </Route>
-         </Switch>
+
+        </Switch>
       </div>
     </Router>
-
-              </div>
-            </form>
+</form>
           </div>
+
         );
     }
 }

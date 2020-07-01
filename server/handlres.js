@@ -50,6 +50,7 @@ module.exports = {
     });
 },
 login:function (req, res)  {
+  console.log(req.body)
   var newUser = {};
   newUser.email = req.body.email;
   newUser.password = req.body.password;
@@ -146,14 +147,14 @@ var phoneNumber=req.body.phoneNumber
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'bookteacheronline@gmail.com', 
-        pass:  'BookTeacherOnline123456789' 
+        user: 'bookteacheronline@gmail.com',
+        pass:  'BookTeacherOnline123456789'
     }
 });
 
 // Step 2
 let mailOptions = {
-    from: email , 
+    from: email ,
     to: 'blackmak21@gmail.com',
     subject: 'There is Student want to contact you !!',
     text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ username+'\n Phone Number :' +phoneNumber +'\n Email :'+email
@@ -167,8 +168,8 @@ transporter.sendMail(mailOptions, (err, data) => {
     res.json("Email send");
 });
 
-	
+
 }
 }
 
-	
+
