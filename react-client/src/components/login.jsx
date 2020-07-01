@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react';
-class SignUpForm extends Component {
+class LoginForm extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
+            email: '',
             password: ''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -24,32 +23,22 @@ class SignUpForm extends Component {
     }
     render() {
         return (
-         <div className="FormCenter">
-            <form onSubmit={this.handleSubmit} className="FormFields">
-              <div className="Form1">
-                <label className="Label1" htmlFor="Email">Email</label>
-                <input type="text" id="Email" className="Input1" placeholder="Enter your Email" Email="Email" value={this.state.Email} onChange={this.handleChange} />
+        <div className="FormCenter">
+            <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+            <div className="Form1">
+                <label className="Label1" htmlFor="email">E-Mail Address</label>
+                <input type="email" id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
               </div>
               <div className="Form1">
                 <label className="Label1" htmlFor="password">Password</label>
                 <input type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
               <div className="Form1">
-              <Router>
-      <div>
-          <button className="Button1"><Link to="/signup">SIGINUP Up</button>
-     <Switch>
-          <Route path="/signup">
-            </>
-          </Route>
-         </Switch>
-      </div>
-    </Router>
-
+                  <button className="Button1">Login</button>
               </div>
             </form>
           </div>
         );
     }
 }
-export default SignUpForm;
+export default LoginForm;
