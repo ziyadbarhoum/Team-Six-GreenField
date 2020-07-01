@@ -1,4 +1,3 @@
-// var jwt = require('jsonwebtoken');
 
 var mongoose=require('mongoose')
 mongoose.Promise = global.Promise;
@@ -7,16 +6,31 @@ mongoose.Promise = global.Promise;
 var bcrypt = require("bcrypt");
 var saltRounds = 10;
 // node mailer tosend email
+//require('dotenv').config()
 
 const nodemailer = require('nodemailer');
 const log = console.log;
+
+require('dotenv').config()
 
 // import models from DB
 
 var items = require('../database-mongo');
 
 var Autho = items.Autho;
-var ADV=items.ADV;
+var ADV=items.ADV2;
+
+
+
+//log out 
+const passport = require('passport');
+//const passportHttp = require('passport-http');
+//const logout = require('express-passport-logout');
+
+
+
+
+
 // Handlers to handle req in express server  
 module.exports = {
 	signup: function (req, res)  {
@@ -128,14 +142,7 @@ addTeacher:function(req,res){
 		place,
 		subject
 	})
-	// Teacher.create(teacherInfo, function (err, teacher) {
-	// 		if(err){
-	// 			throw err;
-
-	// 		}
-	// 		res.json(teacher);
-	// 	});
-	// }
+	
 		newAdv.save()
 		.then(()=> res.json("ADV Added"))
 	    .catch(err=> res.status(400).json('Error:'+err))
@@ -150,8 +157,8 @@ var phoneNumber=req.body.phoneNumber
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'bookteacheronline@gmail.com', 
-        pass:  'BookTeacherOnline123456789' 
+        user: process.env.EMAIL||"bookteacheronline@gmail.com", 
+        pass: process.env.PASSWORD ||"BookTeacherOnline123456789"
     }
 });
 
@@ -172,7 +179,25 @@ transporter.sendMail(mailOptions, (err, data) => {
 });
 
 	
-}
-}
+},
 
-	
+
+logout:function(req,res){
+
+req.logout()
+res.redirect("/")
+console.log("log out ")
+
+  }
+
+// console.log("I am Logout oo")
+//     req.logout(); 
+//     res.json({ 
+//             status: "logout",
+//             msg:"Please Log In again"
+//          });
+
+
+// }
+
+}	

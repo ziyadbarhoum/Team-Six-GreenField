@@ -39,23 +39,23 @@ const authoSchema =new Schema({
 //   });
 // create Adv schema contain advertising 
 
-var AdvSchema= new Schema({
+var AdvSchema2= new Schema({
       phoneNum : Number,
       name : { type: String, required: true },
       price :{ type: String, required: true},
-      Email :{ type: String,  unique: true },
+      Email :{ type: String, required: true},
       Discription:String,
       place: String ,
       subject: String ,
       create_date:{ type: Date, default: Date.now }
   });
 //create models
-const ADV = mongoose.model('ADV', AdvSchema);
+const ADV2 = mongoose.model('ADV2', AdvSchema2);
 // const Teacher = mongoose.model('Teacher', teacherSchema);
 const Autho = mongoose.model('Autho', authoSchema);
 
 // export's part 
-module.exports.ADV  = ADV;
+module.exports.ADV2  = ADV2;
 // module.exports.Teacher = Teacher;
 module.exports.Autho  = Autho;
 

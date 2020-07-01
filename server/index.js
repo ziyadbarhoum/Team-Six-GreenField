@@ -15,6 +15,7 @@ app.post('/ret', handlers.showTeachers)
 app.post('/mainForm', handlers.addTeacher)
 app.post('/findOne', handlers.showSpecificTeacher)
 app.post('/sendemail', handlers.sendEmail)
+app.post('/logout', handlers.logout)
 
 app.get('/', (req, res) => {
   res.status(200).send('Success');
@@ -25,6 +26,6 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(3110, function() {
-  console.log('listening on port 3110!');
+app.listen(3111, function() {
+  console.log('listening on port 3111!');
 });
