@@ -8,7 +8,7 @@ import {
     useRouteMatch,
     useParams
   } from "react-router-dom"
-class LoginForm extends Component {
+  export default  class LoginForm extends Component {
     constructor() {
         super();
         this.state = {
@@ -63,4 +63,3 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;

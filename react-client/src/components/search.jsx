@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import Views from './View.jsx';
+import First from './techeardata.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -72,8 +73,8 @@ class View extends React.Component{
       <button ><Link to="/view">View</Link></button>
         <Switch>
           <Route path="/view">
-            <Views/>
-          </Route>
+            <First/>
+            </Route>
         </Switch>
       </div>
     </Router>
