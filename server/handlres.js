@@ -32,13 +32,14 @@ const passport = require('passport');
 
 
 // Handlers to handle req in express server  
+
+// Handlers to handle req in express server
 module.exports = {
 	signup: function (req, res)  {
   var newUser = new Autho({
     email: req.body.email,
     password: req.body.password
   });
-
    Autho.findOne({ email: newUser.email })
     .then( profile => {
       if (!profile) {
@@ -65,17 +66,15 @@ module.exports = {
       console.log("Error is", err.message);
     });
 },
-
 login:function (req, res)  {
   var newUser = {};
   newUser.email = req.body.email;
   newUser.password = req.body.password;
-
    Autho.findOne({ email: newUser.email })
     .then(profile => {
       if (!profile) {
         res.send("User not exist");
-      } else { 
+      } else {
         bcrypt.compare(
           newUser.password,
           profile.password,
@@ -124,7 +123,7 @@ login:function (req, res)  {
 			res.json(teachers);
 		});
 	},
-  
+
 addTeacher:function(req,res){
 	var phoneNum = req.body.phoneNum;
 	var name = req.body.name;

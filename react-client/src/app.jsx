@@ -1,32 +1,44 @@
 import React, { Component } from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    useParams
+  } from "react-router-dom";
+import SearchPage from './components/search.jsx';
+import SignInSignUpForm from './components/authentication.jsx';
+import SignUpForm from './components/signup.jsx';
+
 export default class App extends React.Component {
   render () {
     return (
-    <div>
-    <Header/>
-    <Content/>
-    </div>);
-  }
-}
-class Header extends React.Component{
-  render(){
-    return(
-      <div>
-        <h1>BOOK TEACHER </h1>
-      </div>
-    )
-  }
-}
-class Content extends React.Component{
-  render(){
-    return(
-      <div>
-        <button onClick="techerfun()">TEACHER</button>
-      <button onClick="studentfun()">STUDENT</button>
-      </div>
-    )
-  }
-}
+    <Router basename="">
+        <div className="App">
+          <div className="App__Aside"></div>
+          <div className="App__Form">
+            <div className="PageSwitcher">
+                              </div>
 
+              <div className="FormTitle">
+              </div>
+                      <button><Link to="/teacher">TEACHER</Link></button>
+          <button><Link to="/STUDENT">STUDENT</Link></button>
+
+              <Route exact path="/student" component={SearchPage}>
+              </Route>
+              <Route path="/teacher" component={SignInSignUpForm}>
+              </Route>
+              <Route path="/teacherForm" component={SignUpForm}>
+              </Route>
+
+          </div>
+
+        </div>
+      </Router>
+       );
+  }
+}
 
 
