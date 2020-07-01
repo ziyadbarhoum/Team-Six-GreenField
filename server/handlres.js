@@ -1,16 +1,38 @@
-var jwt = require('jsonwebtoken');
+
 var mongoose=require('mongoose')
 mongoose.Promise = global.Promise;
 
 // import encrypt lib
 var bcrypt = require("bcrypt");
 var saltRounds = 10;
+// node mailer tosend email
+//require('dotenv').config()
+
+const nodemailer = require('nodemailer');
+const log = console.log;
+
+require('dotenv').config()
+
 // import models from DB
 
 var items = require('../database-mongo');
 
 var Autho = items.Autho;
-var ADV=items.ADV;
+var ADV=items.ADV2;
+
+
+
+//log out 
+const passport = require('passport');
+//const passportHttp = require('passport-http');
+//const logout = require('express-passport-logout');
+
+
+
+
+
+// Handlers to handle req in express server  
+
 // Handlers to handle req in express server
 module.exports = {
 	signup: function (req, res)  {
@@ -119,18 +141,62 @@ addTeacher:function(req,res){
 		place,
 		subject
 	})
-	// Teacher.create(teacherInfo, function (err, teacher) {
-	// 		if(err){
-	// 			throw err;
-
-	// 		}
-	// 		res.json(teacher);
-	// 	});
-	// }
+	
 		newAdv.save()
 		.then(()=> res.json("ADV Added"))
 	    .catch(err=> res.status(400).json('Error:'+err))
-}
-}
+},
+sendEmail:function(req,res){
+
+var username=req.body.userName
+var email=req.body.email
+var phoneNumber=req.body.phoneNumber
+
+// Step 1
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL||"bookteacheronline@gmail.com", 
+        pass: process.env.PASSWORD ||"BookTeacherOnline123456789"
+    }
+});
+
+// Step 2
+let mailOptions = {
+    from: email , 
+    to: 'blackmak21@gmail.com',
+    subject: 'There is Student want to contact you !!',
+    text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ username+'\n Phone Number :' +phoneNumber +'\n Email :'+email
+};
+
+// Step 3
+transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+        res.status(400).json('Error:'+err)
+    }
+    res.json("Email send");
+});
+
+	
+},
 
 
+logout:function(req,res){
+
+req.logout()
+res.redirect("/")
+console.log("log out ")
+
+  }
+
+// console.log("I am Logout oo")
+//     req.logout(); 
+//     res.json({ 
+//             status: "logout",
+//             msg:"Please Log In again"
+//          });
+
+
+// }
+
+}	
