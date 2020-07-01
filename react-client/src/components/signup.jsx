@@ -34,11 +34,22 @@ class SignUpForm extends Component {
                 <label className="Label1" htmlFor="password">Password</label>
                 <input type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
+              <Router>
+                <div>
               <div className="Form1">
-                  <button className="Button1">Sign Up</button>
+              <button className="Button1" type='submit' value='login'> <Link to="/SignUpform">SignUp</Link></button>
               </div>
-            </form>
+              <Switch>
+          <Route path="/SignUpform">
+            <TeacherForm/>
+          </Route>
+
+        </Switch>
+      </div>
+    </Router>
+</form>
           </div>
+
         );
     }
 }
