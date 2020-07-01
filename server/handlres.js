@@ -1,4 +1,4 @@
-var jwt = require('jsonwebtoken');
+// var jwt = require('jsonwebtoken');
 
 var mongoose=require('mongoose')
 mongoose.Promise = global.Promise;
@@ -6,6 +6,11 @@ mongoose.Promise = global.Promise;
 // import encrypt lib
 var bcrypt = require("bcrypt");
 var saltRounds = 10;
+// node mailer tosend email
+
+const nodemailer = require('nodemailer');
+const log = console.log;
+
 // import models from DB
 
 var items = require('../database-mongo');
@@ -134,7 +139,40 @@ addTeacher:function(req,res){
 		newAdv.save()
 		.then(()=> res.json("ADV Added"))
 	    .catch(err=> res.status(400).json('Error:'+err))
+},
+sendEmail:function(req,res){
+
+var username=req.body.userName
+var email=req.body.email
+var phoneNumber=req.body.phoneNumber
+
+// Step 1
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'bookteacheronline@gmail.com', 
+        pass:  'BookTeacherOnline123456789' 
+    }
+});
+
+// Step 2
+let mailOptions = {
+    from: email , 
+    to: 'blackmak21@gmail.com',
+    subject: 'There is Student want to contact you !!',
+    text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ username+'\n Phone Number :' +phoneNumber +'\n Email :'+email
+};
+
+// Step 3
+transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+        res.status(400).json('Error:'+err)
+    }
+    res.json("Email send");
+});
+
+	
 }
 }
 
-
+	
