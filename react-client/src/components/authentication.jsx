@@ -28,7 +28,7 @@ class SignInSignUpForm extends Component {
       </div>
     </form>
   </div>
-  <Switch>
+
           <Route path="/SIGNUP">
             <SignUpForm/>
           </Route>
@@ -36,7 +36,7 @@ class SignInSignUpForm extends Component {
             <LoginForm/>
           </Route>
 
-        </Switch>
+        
       </div>
     </Router>
         );

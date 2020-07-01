@@ -1,21 +1,22 @@
-
 var mongoose=require('mongoose')
 mongoose.Promise = global.Promise;
-
 // import encrypt lib
 var bcrypt = require("bcrypt");
 var saltRounds = 10;
 // node mailer tosend email
-
+//require('dotenv').config()
 const nodemailer = require('nodemailer');
 const log = console.log;
-
+require('dotenv').config()
 // import models from DB
-
 var items = require('../database-mongo');
-
 var Autho = items.Autho;
-var ADV=items.ADV;
+var ADV=items.ADV2;
+//log out
+const passport = require('passport');
+//const passportHttp = require('passport-http');
+//const logout = require('express-passport-logout');
+// Handlers to handle req in express server
 // Handlers to handle req in express server
 module.exports = {
 	signup: function (req, res)  {
@@ -50,7 +51,6 @@ module.exports = {
     });
 },
 login:function (req, res)  {
-  console.log(req.body)
   var newUser = {};
   newUser.email = req.body.email;
   newUser.password = req.body.password;
@@ -77,9 +77,7 @@ login:function (req, res)  {
     .catch(err => {
       console.log("Error is ", err.message);
     });
-
 },
-
   getAlldatafromAuthoSchema:function(req,res){
 	 Autho.find({}, function(err, user){
       if(err){
@@ -90,7 +88,6 @@ login:function (req, res)  {
     });
   },
   showTeachers: function(req, res)  {
-
 		ADV.find(function(err, teachers)  {
 			if(err){
 				throw err;
@@ -107,7 +104,6 @@ login:function (req, res)  {
 			res.json(teachers);
 		});
 	},
-
 addTeacher:function(req,res){
 	var phoneNum = req.body.phoneNum;
 	var name = req.body.name;
@@ -125,33 +121,23 @@ addTeacher:function(req,res){
 		place,
 		subject
 	})
-	// Teacher.create(teacherInfo, function (err, teacher) {
-	// 		if(err){
-	// 			throw err;
 
-	// 		}
-	// 		res.json(teacher);
-	// 	});
-	// }
 		newAdv.save()
 		.then(()=> res.json("ADV Added"))
 	    .catch(err=> res.status(400).json('Error:'+err))
 },
 sendEmail:function(req,res){
-
 var username=req.body.userName
 var email=req.body.email
 var phoneNumber=req.body.phoneNumber
-
 // Step 1
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'bookteacheronline@gmail.com',
-        pass:  'BookTeacherOnline123456789'
+        user: process.env.EMAIL||"bookteacheronline@gmail.com",
+        pass: process.env.PASSWORD ||"BookTeacherOnline123456789"
     }
 });
-
 // Step 2
 let mailOptions = {
     from: email ,
@@ -159,7 +145,6 @@ let mailOptions = {
     subject: 'There is Student want to contact you !!',
     text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ username+'\n Phone Number :' +phoneNumber +'\n Email :'+email
 };
-
 // Step 3
 transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
@@ -168,8 +153,17 @@ transporter.sendMail(mailOptions, (err, data) => {
     res.json("Email send");
 });
 
-
-}
-}
-
-
+},
+logout:function(req,res){
+req.logout()
+res.redirect("/")
+console.log("log out ")
+  }
+// console.log("I am Logout oo")
+//     req.logout();
+//     res.json({
+//             status: "logout",
+//             msg:"Please Log In again"
+//          });
+// }
+}	

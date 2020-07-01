@@ -1,5 +1,14 @@
 
 import React, { Component } from 'react';
+import TeacherForm from './formData.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 class SignUpForm extends Component {
     constructor() {
         super();
