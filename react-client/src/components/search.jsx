@@ -1,11 +1,22 @@
 
 import React, { Component } from 'react';
+import Views from './View.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+
 export default class SearchPage extends React.Component {
   render () {
     return (
     <div>
     <Search/>
     <View/>
+
  </div>);
   }
 }
@@ -55,10 +66,18 @@ class Search extends React.Component{
 class View extends React.Component{
   render(){
     return(
+      <Router>
       <div>
-        <button onclick="techerfun()">View</button>
 
+      <button ><Link to="/view">View</Link></button>
+        <Switch>
+          <Route path="/view">
+            <Views/>
+          </Route>
+        </Switch>
       </div>
+    </Router>
+
     )
   }
 }
