@@ -1,4 +1,14 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom"
+
+
 class TeacherForm extends Component {
     constructor() {
         super();
@@ -59,8 +69,11 @@ class TeacherForm extends Component {
                 <input type="description" id="description" className="Input1" placeholder="Enter your description" name="description" value={this.state.description} onChange={this.handleChange} />
               </div>
               <div className="FormField">
-                  <button className="Button1">Submit</button>
+              
+              <button ><Link to="/see">Submit</Link></button>
+
               </div>
+
             </form>
           </div>
         );

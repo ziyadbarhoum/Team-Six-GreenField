@@ -40,6 +40,7 @@
     "nodemailer": "^6.4.10",
     "nodemailer-express-handlebars": "^4.0.0",
     "nodemailer-handlebars": "^1.0.1",
+    "passport": "^0.4.1",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-router": "^5.2.0",
@@ -56,5 +57,5 @@
   },
   "homepage": "https://github.com/suraaloqaily/Team-Six-GreenField#readme",
   "keywords": [],
-  "description": ""
+  "description": "BOOK TEACHER ONLINE PROJECT"
 }

@@ -42,21 +42,13 @@ import {
                 <label className="Label1" htmlFor="password">Password</label>
                 <input type="password" id="password" className="Input1" placeholder="Enter your password" name="password" />
               </div>
-              <Router>
-                <div>
+
 
               <div className="Form1">
-                  <button className="Button1" type='submit' value='login'> <Link to="/loginform">Login</Link></button>
+              <button className="Button1" type='submit'> <Link to="/SignUpform">login</Link></button>
               </div>
 
-              <Switch>
-          <Route path="/loginform">
-            <TeacherForm/>
-          </Route>
 
-        </Switch>
-      </div>
-    </Router>
             </form>
           </div>
         );

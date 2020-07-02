@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 
-import First from './techeardata.jsx';
+import First1 from './techeardata.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,17 +11,17 @@ import {
   useParams
 } from "react-router-dom";
 
-export default class SearchPage extends React.Component {
+export default class SearchTe extends React.Component {
   render () {
     return (
     <div>
-    <Search/>
-    <View/>
+    <Search1/>
+    <View1/>
 
  </div>);
   }
 }
-class Search extends React.Component{
+class Search1 extends React.Component{
   constructor(props) {
     super(props);
     this.state = {value: 'Amman'};
@@ -64,7 +64,7 @@ class Search extends React.Component{
 }
 
 
-class View extends React.Component{
+class View1 extends React.Component{
   render(){
     return(
 

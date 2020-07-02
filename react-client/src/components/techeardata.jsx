@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 
 export default class First extends React.Component {
   constructor (props){
@@ -38,10 +45,7 @@ var teacherdata=[
         <div>
         {teacherdata.map(function(d, idx){
            return (<li key={idx}>{d.name}</li>
-            
-
-
-           )
+              )
          })}
         </div>
       );
