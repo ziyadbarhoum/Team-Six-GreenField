@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react';
+import First from './techeardata.jsx';
 
-import First1 from './techeardata.jsx';
+
+import axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,

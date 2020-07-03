@@ -16,18 +16,17 @@ class SignInSignUpForm extends Component {
     }
     render() {
         return (
-          <div className="FormCenter">
-          <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
-        <div className="Form1">
-        <button className="Button1"><Link to="/teacherForm">SIGNUP</Link></button>
-        </div>
-        <div className="Form1">
-        <button className="Button1"><Link to="/LoginForm">LOGIN</Link></button>
-    </div>
-  </form>
-</div>
-      );
-  }
+        <div className="FormCenter">
+            <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+          <div className="Form1">
+          <button className="Button1"><Link to="/LoginForm">LOGIN</Link></button>
+          </div>
+          <div className="Form1">
+          <button className="Button1"><Link to="/teacherForm">SignUp</Link></button>
+      </div>
+    </form>
+  </div>
+        );
+    }
 }
-
 export default SignInSignUpForm;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Axios from "axios";
 
 import {
     BrowserRouter as Router,
@@ -11,18 +11,23 @@ import {
   } from "react-router-dom";
   import TeacherForm from './components/formData.jsx';
 
+ import StudentForm from './components/connectpage.jsx';
+
   import SignInSignUpForm from './components/authentication.jsx';
   import LoginForm from './components/login.jsx';
   import SearchPage from './components/search.jsx';
   import SearchTe from './components/searchteach.jsx';
   import SignUpForm from './components/signup.jsx';
-  import First from './components/techeardata.jsx';
+
+  // import First from './components/formdata.jsx';
+import First from './components/techeardata.jsx';
+
 
   ;
   export default class App extends React.Component {
     render () {
       return (
-      <Router basename="">
+        <Router basename="">
         <div className="App">
           <div className="App__Aside"></div>
           <div className="App__Form">
@@ -31,20 +36,27 @@ import {
               <div className="FormTitle">
               </div>
               <div>
-//         <h1>BOOK TEACHER </h1>
-//       </div>
+        <h1>BOOK TEACHER </h1>
+       </div>
                       <button><Link to="/teacher">TEACHER</Link></button>
           <button><Link to="/STUDENT">STUDENT</Link></button>
               <Route  path="/student" component={SearchPage}>
               </Route>
+              <Route  path="/studentf">
+              <StudentForm/>
+              </Route>
+
+
               <Route path="/teacher" component={SignInSignUpForm}>
               </Route>
 
 
               <Route path="/teacherForm" component={SignUpForm}>
               </Route>
-              <Route path="/view" component={First}>
+              <Route path="/view" >
+              <First/>
               </Route>
+              
               <Route path="/SignUpform">
             <TeacherForm/>
           </Route>
@@ -54,9 +66,7 @@ import {
           <Route path="/loginform">
             <LoginForm/>
           </Route>
-          <Route path="/SearchTe">
-            < SearchTe/>
-          </Route>
+
           </div>
         </div>
       </Router>

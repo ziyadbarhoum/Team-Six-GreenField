@@ -41,13 +41,23 @@ var teacherdata=[
 ];
 
 
-       return (
-        <div>
-        {teacherdata.map(function(d, idx){
-           return (<li key={idx}>{d.name}</li>
-              )
-         })}
-        </div>
+return (
+  <div>
+  {teacherdata.map(function(d, idx){
+     return (
+       <ul>
+       <p >{d.name}</p>
+       <p >{d.phoneNum}</p>
+       <p >{d.price}</p>
+       <p >{d.Email}</p>
+       <p >{d.subject}</p>
+       <p>{d.Discription}</p>
+       <button> <Link to="/studentf">book</Link> </button>
+
+       </ul>
+        )
+   })}
+  </div>
       );
     }
   }
