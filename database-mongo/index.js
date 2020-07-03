@@ -37,25 +37,50 @@ const authoSchema =new Schema({
 //       subject: String ,
 //       create_date:{ type: Date, default: Date.now }
 //   });
-// create Adv schema contain advertising 
+// create Adv schema contain advertising
 
-var AdvSchema= new Schema({
-      phoneNum : Number,
-      name : { type: String, required: true },
-      price :{ type: String, required: true},
-      Email :{ type: String,  unique: true },
-      Discription:String,
-      place: String ,
-      subject: String ,
-      create_date:{ type: Date, default: Date.now }
-  });
+// var AdvSchema2= new Schema({
+//       phoneNum : Number,
+//       name : { type: String, required: true },
+//       price :{ type: String, required: true},
+//       Email : String,
+//       Discription:String,
+//       place: String ,
+//       subject: String ,
+//       create_date:{ type: Date, default: Date.now }
+//   });
 //create models
-const ADV = mongoose.model('ADV', AdvSchema);
+// const ADV2 = mongoose.model('ADV2', AdvSchema2);
 // const Teacher = mongoose.model('Teacher', teacherSchema);
+
+// var AdvSchema2= new Schema({
+//   phone : Number,
+//   name : { type: String, required: true },
+//   price :{ type: String, required: true},
+//   email : String,
+//   description:String,
+//   place: String ,
+//   subject: String ,
+//   create_date:{ type: Date, default: Date.now }
+// });
+// const ADV2 = mongoose.model('ADV2', AdvSchema2);
+
+var AdvSchema3= new Schema({
+  phone : Number,
+  name : { type: String, required: true },
+  price :{ type: String, required: true},
+  email : String,
+  description:String,
+  place: String ,
+  subject: String ,
+  create_date:{ type: Date, default: Date.now }
+});
+const ADV3 = mongoose.model('ADV3', AdvSchema3);
+
 const Autho = mongoose.model('Autho', authoSchema);
 
-// export's part 
-module.exports.ADV  = ADV;
+// export's part
+module.exports.ADV3  = ADV3;
 // module.exports.Teacher = Teacher;
 module.exports.Autho  = Autho;
 
@@ -68,7 +93,7 @@ module.exports.Autho  = Autho;
 // })
 // };
 
-// // insert into autho schema 
+// // insert into autho schema
 // var insertIntoAutho = function(instanse) {
 //   // console.log(db.base.modelSchemas.Autho)
 //     Autho.create(instanse, function (err, res) {
@@ -80,7 +105,7 @@ module.exports.Autho  = Autho;
 //           Autho.close()
 //         })
 // };
-// // insert into Teacher schema 
+// // insert into Teacher schema
 // var insertIntoTeacher = function(instanse) {
 //   Teacher.create(instanse, function (err, res) {
 //           if (err) {

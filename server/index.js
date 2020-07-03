@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.post('/signup', handlers.signup);
 app.post('/login', handlers.login)
-app.post('/ret', handlers.showTeachers)
+app.get('/ret', handlers.showTeachers)
 app.post('/mainForm', handlers.addTeacher)
 app.post('/findOne', handlers.showSpecificTeacher)
 app.post('/sendemail', handlers.sendEmail)
@@ -17,5 +17,5 @@ app.get('/', (req, res) => {
 });
 var port = 9000
 app.listen(port, function() {
-  console.log('listening on port 3000!');
+  console.log('listening on port 9000!');
 });
