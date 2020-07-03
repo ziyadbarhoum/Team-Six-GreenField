@@ -20,12 +20,12 @@ class SignUpForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e) {
-        let target = e.target;
-        let name = target.name;
-        this.setState({
-          [name]: value
-        });
-    }
+      let {name, value} = e.target;
+      this.setState({
+        [name]: value
+      });
+  }
+
     handleSubmit(e) {
       e.preventDefault();
       const newstudent= {
@@ -44,27 +44,72 @@ class SignUpForm extends Component {
 }
     render() {
         return (
-        <div className="FormCenter">
-            <form onSubmit={this.handleSubmit} className="FormFields">
-              <div className="Form1">
-                <label className="Label1" htmlFor="email">Email</label>
-                <input type="text" id="name" className="Input1" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} />
-              </div>
-              <div className="Form1">
-                <label className="Label1" htmlFor="password">Password</label>
-                <input type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-              </div>
-              <div className="Form1">
-                  <button className="Button1">
-                  <Link to="/SignUpform" type="submit">SignUp</Link>
-                  </button>
-                   <Link to="/loginform" className="Link1">I'm already member</Link>
-
-              </div>
-            </form>
-          </div>
+          <div className="FormCenter" style={h1}>
+          <form className="FormFields" method="POST"  action='/signup'>
+            <div  className="form-group" style={h3} >
+              <label>E-mail Address : </label>
+              <input  style={h2} type="text"  placeholder="Enter your Email" name='email' />
+            </div>
+            <div style={h3}>
+              <label >Password :</label>
+              <input style={h2} type="password"  placeholder="Enter your password" name="password" />
+            </div>
+            <div >
+            <button style={h4}  className="Button1" type='submit' value='sign up'> <Link to="/SignUpform">SignUp</Link></button>
+            </div>
+</form>
+        </div>
         );
     }
+}
+const h1={
+  "border-radius": "5px",
+ "background-color": "#F2F2F2",
+ "padding": "20px",
+ cursor: "cursor",
+ display: "inline-block",
+ background: "#FFFFFF",
+ border: "1px solid #1D606C",
+ borderWidth: "1px 1px 1px 1px",
+   borderRadius: "10px",
+ padding: "10px 20px 10px 20px",
+ fontSize: "20px",
+ fontFamily: "cursive",
+ fontWeight: "900",
+ fontStyle: "italic",
+ textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+ position: "absolute",
+ top: "35%",
+ left: "35%",
+}
+const h2={
+      "font-size": "16px",
+       "border-radius":"5px",
+           "background": "#F9F1F7",
+           "border":"#000000",
+           "padding": "10px",
+}
+const h3={
+   "margin": "20%",
+    top: "40%",
+    left: "50%",
+}
+const h4={
+cursor: "cursor",
+ display: "inline-block",
+ background: "#FFFFFF",
+ border: "1px solid #1D606C",
+ borderWidth: "1px 1px 1px 1px",
+   borderRadius: "10px",
+ padding: "10px 20px 10px 20px",
+ fontSize: "20px",
+ fontFamily: "cursive",
+ fontWeight: "900",
+ fontStyle: "italic",
+ textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+ position: "absolute",
+ top: "80%",
+ left: "35%",
 }
 export default SignUpForm;
 

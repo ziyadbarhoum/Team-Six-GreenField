@@ -42,25 +42,61 @@ var teacherdata=[
 
 
 return (
-  <div>
-  {teacherdata.map(function(d, idx){
-     return (
-       <ul>
-       <p >{d.name}</p>
-       <p >{d.phoneNum}</p>
-       <p >{d.price}</p>
-       <p >{d.Email}</p>
-       <p >{d.subject}</p>
-       <p>{d.Discription}</p>
-       <button> <Link to="/studentf">book</Link> </button>
-
-       </ul>
-        )
-   })}
-  </div>
+  <div style={h1}>
+        {teacherdata.map(function(d, idx){
+           return (
+             <ul style={h5}>
+             <p style={h3}>{d.name}</p>
+             <p style={h3}>{d.phoneNum}</p>
+             <p style={h3}>{d.price}</p>
+             <p style={h3}>{d.Email}</p>
+             <p style={h3}>{d.subject}</p>
+             <p style={h3}>{d.Discription}</p>
+             <button style={h3} ><Link to="/studentf">book</Link></button>
+             </ul>
+              )
+         })}
+        </div>
+  
       );
     }
   }
+  const h1={
+    "border-radius": "5px",
+   "background-color": "#F2F2F2",
+   "padding": "20px",
+   cursor: "cursor",
+   display: "inline-block",
+   background: "#FFFFFF",
+   border: "1px solid #1D606C",
+   borderWidth: "1px 1px 1px 1px",
+     borderRadius: "10px",
+   padding: "10px 20px 10px 20px",
+   fontSize: "20px",
+   fontFamily: "cursive",
+   fontWeight: "900",
+   fontStyle: "italic",
+   textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+   position: "absolute",
+   top: "35%",
+   left: "35%",
+ }
+  const h5={
+    background: "#FFFFFF",
+   border: "1px solid #1D606C",
+   borderWidth: "1px 1px 1px 1px",
+   borderRadius: "10px",
+   "padding":"5px",
+   "margin-left":" 25px",
+    position:"center",
+ backgroundImage: 'url(https://www.mylaps.com/app/uploads/2016/05/mylaps-background-image.jpg)',
+ }
+ const h3={
+   "margin-top":" 50px",
+   "margin-left":" 50px",
+ }
+
+
 // var teachers={techeardata};
 // var teacherTable = (props) => (
 //   <table>
