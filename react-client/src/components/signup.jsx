@@ -61,7 +61,7 @@ class SignUpForm extends Component {
                 <input  style={h2} type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.updatePassword} />
             </div>
             <div >
-            <button style={h4} type='submit'> login</button>
+            <button style={h4} type='submit'> signup</button>
             </div>
 </form>
         </div>

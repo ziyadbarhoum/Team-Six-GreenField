@@ -127,9 +127,9 @@ addTeacher:function(req,res){
 	    .catch(err=> res.status(400).json('Error:'+err))
 },
 sendEmail:function(req,res){
-var username=req.body.userName
+var name=req.body.name
 var email=req.body.email
-var phoneNumber=req.body.phoneNumber
+var phone=req.body.phone
 // Step 1
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -143,7 +143,7 @@ let mailOptions = {
     from: email ,
     to: 'blackmak21@gmail.com',
     subject: 'There is Student want to contact you !!',
-    text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ username+'\n Phone Number :' +phoneNumber +'\n Email :'+email
+    text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ name+'\n Phone Number :' +phone +'\n Email :'+email
 };
 // Step 3
 transporter.sendMail(mailOptions, (err, data) => {

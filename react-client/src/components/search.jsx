@@ -14,39 +14,40 @@ import {
 } from "react-router-dom";
 
 export default class SearchPage extends React.Component {
-  render () {
-    return (
-    <div>
-    <Search/>
-    <View/>
 
- </div>);
-  }
-}
-class Search extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {value: 'Amman'};
+  constructor() {
+    super();
+    this.state = {
+      place:'',
+      Subject:'',
+    };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.updatePlace= this.updatePlace.bind(this);
+    this.updateSubject= this.updateSubject.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
-  handleChange(e) {
-    let {name, value} = e.target;
+  updatePlace(evt) {
     this.setState({
-      [name]: value
+      place : evt.target.value
     });
-}
+  }
+  updateSubject(evt) {
+    this.setState({
+      Subject : evt.target.value
+    });
+  }
+
+
 
   handleSubmit(e) {
     e.preventDefault();
-    const newstudent= {
-      City: this.state. City,
-      Subject: this.stateSubject
+    const datasp= {
+      place: this.state.place,
+      Subject: this.state.Subject
 
     };
-    axios.post('http://localhost:9000/loginform"', newstudent)
+    axios.post('http://localhost:9000/findOne"', datasp)
     .then((res) => {
         console.log(res.data)
     }).catch((error) => {
@@ -59,22 +60,28 @@ class Search extends React.Component{
       <form  style={h1}>
       <label style={h3}>
       City:
-        <select value={this.state.value} onChange={this.handleChange}>
-          <option value="Amman">Amman</option>
-          <option value="Karak">Karak</option>
-          <option value="Zarqa">Zarqa</option>
-          <option value="Irbid">Irbid</option>
+        <select name='place' value={this.state.place} onChange={this.updatePlace}>
+          <option place="Amman">Amman</option>
+          <option place="Karak">Karak</option>
+          <option place="Zarqa">Zarqa</option>
+          <option place="Irbid">Irbid</option>
         </select>
       </label> <br/>
       <label style={h3}>
     Subject:
-        <select value={this.state.value} onChange={this.handleChange}>
-          <option value="Math">Math</option>
-          <option value="English">English</option>
-          <option value="Arabic">Arabic</option>
-          <option value="Science">Science</option>
+        <select name='place' value={this.state.Subject} onChange={this.updateSubject}>
+          <option Subject="Math">Math</option>
+          <option Subject="English">English</option>
+          <option Subject="Arabic">Arabic</option>
+          <option Subject="Science">Science</option>
         </select>
       </label>
+
+      <div >
+            <button style={h4} type='submit'> <Link to="/view">View</Link></button>
+            </div>
+
+
     </form>
 
     );
@@ -82,18 +89,18 @@ class Search extends React.Component{
 }
 
 
-class View extends React.Component{
-  render(){
-    return(
+// class View extends React.Component{
+//   render(){
+//     return(
 
 
-      <button  style={h4}><Link to="/view">View</Link></button>
+//       <button  style={h4}><Link to="/view">View</Link></button>
 
 
 
-    )
-  }
-}
+//     )
+//   }
+// }
 const h1={
   "border-radius": "5px",
  "background-color": "#F2F2F2",

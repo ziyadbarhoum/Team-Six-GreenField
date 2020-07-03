@@ -1,8 +1,15 @@
-
-
 import React, { Component } from 'react';
 import SearchTe from  './searchteach.jsx';
 import axios from "axios";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+
 class StudentForm extends Component {
     constructor() {
         super();
@@ -11,16 +18,27 @@ class StudentForm extends Component {
             phone:'',
             email:''
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.updatename= this.updatename.bind(this);
+        this.updatephone= this.updatephone.bind(this);
+        this.updateemail= this.updateemail.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-    handleChange(e) {
-      let {name, value} = e.target;
+    updatename(evt) {
       this.setState({
-        [name]: value
+        name : evt.target.value
       });
-  }
+    }
+    updatephone(evt) {
+      this.setState({
+       phone: evt.target.value
+      });
+    }
+    updateemail(evt) {
+      this.setState({
+        email : evt.target.value
+      });
+    }
+
     handleSubmit(e) {
       e.preventDefault();
       const newstudent= {
@@ -29,7 +47,7 @@ class StudentForm extends Component {
         email: this.state.email ,
       };
       console.log(newstudent)
-  axios.post('http://localhost:9000/studentf', newstudent)
+  axios.post('http://localhost:9000/sendemail', newstudent)
   .then((res) => {
       console.log(res.data)
   }).catch((error) => {
@@ -44,21 +62,20 @@ class StudentForm extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields">
               <div className="FormField"  style={h3}>
                 <label className="Form1" htmlFor="name">Name</label>
-                <input  style={h2} type="text" id="name" className="Form1" placeholder="Enter your full name" name="name" value={this.state.name} onChange={this.handleChange} />
+                <input  style={h2} type="text" id="name" className="Form1" placeholder="Enter your full name" name="name" value={this.state.name} onChange={this.updatename} />
               </div>
               <div className="FormField">
                 <label className="Form1" htmlFor="phone">Phone</label>
-                <input  style={h2} type="phone" id="phone" className="Input1" placeholder="Enter your phone" name="phone" value={this.state.phone} onChange={this.handleChange} />
+                <input  style={h2} type="phone" id="phone" className="Input1" placeholder="Enter your phone" name="phone" value={this.state.phone} onChange={this.updatephone} />
               </div>
               <div className="FormField">
                 <label className="Form1" htmlFor="email">Email</label>
-                <input  style={h2} type="email" id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <input  style={h2} type="email" id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.updateemail} />
               </div>
               <div className="FormField">
-                  <button  style={h4} className="Button1" type="submit">Submit</button>
-              </div>
-              <div className="FormField">
-                  <button style={h4}className="Button1">Submit</button>
+                  <button  style={h5} className="Button1" type="submit">Submit</button>
+
+                  <button style={h4}className="Button1">Cancle</button>
               </div>
             </form>
           </div>
@@ -112,9 +129,27 @@ cursor: "cursor",
  fontStyle: "italic",
  textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
  position: "absolute",
- top: "80%",
- left: "35%",
+ top: "100%",
+ left: "15%",
 }
+
+const h5={
+  cursor: "cursor",
+   display: "inline-block",
+   background: "#FFFFFF",
+   border: "1px solid #1D606C",
+   borderWidth: "1px 1px 1px 1px",
+     borderRadius: "10px",
+   padding: "10px 20px 10px 20px",
+   fontSize: "20px",
+   fontFamily: "cursive",
+   fontWeight: "900",
+   fontStyle: "italic",
+   textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+   position: "absolute",
+   top: "100%",
+   left: "60%",
+  }
 export default StudentForm;
 
 
