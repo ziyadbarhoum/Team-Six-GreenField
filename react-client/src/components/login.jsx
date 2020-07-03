@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import TeacherForm from './formData.jsx';
 import axios from "axios";
 import {
@@ -15,8 +16,9 @@ class LoginForm extends Component {
         this.state = {
             email: '',
             password: ''
+
         };
-        // this.handleChange = this.handleChange.bind(this);
+
         this.updateemail= this.updateemail.bind(this);
         this.updatePassword= this.updatePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,14 +43,18 @@ class LoginForm extends Component {
         email: this.state.email,
         password: this.state.password
 
+
       };
       console.log(newstudent)
   axios.post('http://localhost:9000/login', newstudent)
   .then((res) => {
-    // if(res.data === true){
-    //   window.location ='/home'
-    // }
+    if(res.data === "User authenticated"){
+      window.location='/SignUpform'
+
+      // return <Redirect to='/SignUpform' />
       console.log(res.data)
+    }
+
   }).catch((error) => {
       console.log(error)
   });
@@ -57,7 +63,7 @@ class LoginForm extends Component {
     render() {
         return (
           <div className="log" style={h1}>
-          <form onSubmit={this.handleSubmit} className="FormFields">
+          <form onSubmit={this.handleSubmit} className="FormFields" >
           <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="name">E-Mail Address :</label>
               <input type="email"  style={h2} id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.updateemail} />

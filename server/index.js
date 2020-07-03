@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.post('/signup', handlers.signup);
 app.post('/login', handlers.login)
+app.get('/login', handlers.login)
 app.get('/ret', handlers.showTeachers)
 app.post('/mainForm', handlers.addTeacher)
 app.post('/findOne', handlers.showSpecificTeacher)

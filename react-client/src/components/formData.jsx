@@ -20,7 +20,7 @@ class TeacherForm extends Component {
             email:'',
             description:''
         };
-        //this.handleChange = this.handleChange.bind(this);
+        
         this.updateName= this.updateName.bind(this);
         this.updateSubject= this.updateSubject.bind(this);
         this.updatePlace= this.updatePlace.bind(this);
@@ -33,12 +33,7 @@ class TeacherForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-  //   handleChange(e) {
-  //     let {name, value} = e.target;
-  //     this.setState({
-  //       [name]: value
-  //     });
-  // }
+
 
   updateName(evt) {
 
@@ -82,14 +77,6 @@ class TeacherForm extends Component {
      description : evt.target.value
     });
   }
-    // handleChange(event) {
-    //   alert(this.state.email);
-    //   this.setState({name: event.target.name});
-    //   this.setState({password: event.target.password});
-    // }
-
-
-
     handleSubmit(e) {
       e.preventDefault();
       const newRow = {
