@@ -7,7 +7,7 @@ import SignInSignUpForm from './components/authentication.jsx';
 import LoginForm from './components/login.jsx';
 import SearchPage from './components/search.jsx';
 import SignUpForm from './components/signup.jsx';
-import First from './components/techeardata.jsx';
+
 
 import {
   BrowserRouter as Router,
