@@ -11,7 +11,7 @@ require('dotenv').config()
 // import models from DB
 var items = require('../database-mongo');
 var Autho = items.Autho;
-var ADV=items.ADV2;
+// var ADV=items.ADV2;
 //log out
 const passport = require('passport');
 //const passportHttp = require('passport-http');
@@ -88,7 +88,7 @@ login:function (req, res)  {
     });
   },
   showTeachers: function(req, res)  {
-		ADV.find(function(err, teachers)  {
+		items.ADV3.find(function(err, teachers)  {
 			if(err){
 				throw err;
 			}
@@ -97,7 +97,7 @@ login:function (req, res)  {
 	},
 	 showSpecificTeacher: function(req, res)  {
        var toShow= req.body
-		ADV.find(toShow,function(err, teachers)  {
+		ADV3.find(toShow,function(err, teachers)  {
 			if(err){
 				throw err;
 			}
@@ -105,19 +105,19 @@ login:function (req, res)  {
 		});
 	},
 addTeacher:function(req,res){
-	var phoneNum = req.body.phoneNum;
+	var phone = req.body.phone;
 	var name = req.body.name;
 	var price = req.body.price;
-	var Email = req.body.Email;
-	var Discription = req.body.Discription;
+	var email = req.body.email;
+	var description = req.body.description;
 	var place = req.body.place;
 	var subject = req.body.subject;
-	const newAdv= new ADV({
-		phoneNum,
+	const newAdv= new items.ADV3({
+		phone,
 		name,
 		price,
-		Email,
-		Discription,
+		email,
+		description,
 		place,
 		subject
 	})

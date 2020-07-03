@@ -8,10 +8,6 @@ import {
   useParams
 } from "react-router-dom";
 import axios from 'axios';
-
-
-
-
 class TeacherForm extends Component {
     constructor() {
         super();
@@ -24,23 +20,73 @@ class TeacherForm extends Component {
             email:'',
             description:''
         };
-        this.handleChange = this.handleChange.bind(this);
+        //this.handleChange = this.handleChange.bind(this);
+        this.updateName= this.updateName.bind(this);
+        this.updateSubject= this.updateSubject.bind(this);
+        this.updatePlace= this.updatePlace.bind(this);
+        this.updatePrice= this.updatePrice.bind(this);
+        this.updatePhone= this.updatePhone.bind(this);
+        this.updateemail= this.updateemail.bind(this);
+        this.updatediscription= this.updatediscription.bind(this);
+
+
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-    handleChange(e) {
-      let {name, value} = e.target;
-      this.setState({
-        [name]: value
-      });
+  //   handleChange(e) {
+  //     let {name, value} = e.target;
+  //     this.setState({
+  //       [name]: value
+  //     });
+  // }
+
+  updateName(evt) {
+
+    this.setState({
+     name : evt.target.value
+    });
   }
 
+  updateSubject(evt) {
+    this.setState({
+     subject : evt.target.value
+    });
+  }
 
-    handleChange(event) {
-      alert(this.state.email);
-      this.setState({email: event.target.email});
-      this.setState({password: event.target.password});
-    }
+  updatePlace(evt) {
+  this.setState({
+     place : evt.target.value
+    });
+  }
+  updatePrice(evt) {
+
+    this.setState({
+     price : evt.target.value
+    });
+  }
+  updatePhone(evt) {
+
+    this.setState({
+     phone : evt.target.value
+    });
+  }
+  updateemail(evt) {
+
+    this.setState({
+    email : evt.target.value
+    });
+  }
+  updatediscription(evt) {
+
+    this.setState({
+     description : evt.target.value
+    });
+  }
+    // handleChange(event) {
+    //   alert(this.state.email);
+    //   this.setState({name: event.target.name});
+    //   this.setState({password: event.target.password});
+    // }
 
 
 
@@ -57,7 +103,7 @@ class TeacherForm extends Component {
 
       };
       console.log(newRow)
-  axios.post('http://localhost:9000/SignUpform', newRow)
+  axios.post('http://localhost:9000/mainForm', newRow)
   .then((res) => {
       console.log(res.data)
   }).catch((error) => {
@@ -72,34 +118,34 @@ class TeacherForm extends Component {
           <form onSubmit={this.handleSubmit} className="FormFields">
             <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="name">Name</label>
-              <input type="text" id="name" className="Form1" placeholder="Enter your full name" name="name" value={this.state.name} onChange={this.handleChange}  style={h2}/>
+              <input type="text" id="name" className="Form1" placeholder="Enter your full name" name="name" value={this.state.name} onChange={this.updateName}  style={h2}/>
             </div>
             <div className="FormField" style={h3}>
               <label className="FormField__Label" htmlFor="subject">Subject</label>
-              <input type="subject" id="subject" style={h2} className="Input1" placeholder="Enter your subject" name="subject" value={this.state.subject} onChange={this.handleChange} />
+              <input type="subject" id="subject" style={h2} className="Input1" placeholder="Enter your subject" name="subject" value={this.state.subject} onChange={this.updateSubject} />
             </div>
             <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="place">Place</label>
-              <input type="place" id="place"  style={h2}className="Input1" placeholder="Enter your place" name="place" value={this.state.place} onChange={this.handleChange} />
+              <input type="place" id="place"  style={h2}className="Input1" placeholder="Enter your place" name="place" value={this.state.place} onChange={this.updatePlace} />
             </div>
             <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="price">Price</label>
-              <input type="price" id="price"  style={h2} className="Input1" placeholder="Enter your price" name="price" value={this.state.price} onChange={this.handleChange} />
+              <input type="price" id="price"  style={h2} className="Input1" placeholder="Enter your price" name="price" value={this.state.price} onChange={this.updatePrice} />
             </div>
             <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="phone">Phone</label>
-              <input type="phone"  style={h2} id="phone" className="Input1" placeholder="Enter your phone" name="phone" value={this.state.phone} onChange={this.handleChange} />
+              <input type="phone"  style={h2} id="phone" className="Input1" placeholder="Enter your phone" name="phone" value={this.state.phone} onChange={this.updatePhone} />
             </div>
             <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="email">Email</label>
-              <input type="email"  style={h2} id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+              <input type="email"  style={h2} id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.updateemail} />
             </div>
             <div className="FormField" style={h3}>
               <label className="Form1" htmlFor="description">Description</label>
-              <input type="description" style={h2} id="description" className="Input1" placeholder="Enter your description" name="description" value={this.state.description} onChange={this.handleChange} />
+              <input type="description" style={h2} id="description" className="Input1" placeholder="Enter your description" name="description" value={this.state.description} onChange={this.updatediscription} />
             </div>
             <div className="FormField" style={h3}>
-            <button style={h4}><Link to="/see">Submit</Link></button>
+            <button style={h4} type='submit'>Submit</button>
             </div>
           </form>
         </div>

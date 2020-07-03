@@ -13,18 +13,24 @@ class SignUpForm extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
+            email: '',
             password: ''
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.updateemail= this.updateemail.bind(this);
+        this.updatePassword= this.updatePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(e) {
-      let {name, value} = e.target;
+    updateemail(evt) {
       this.setState({
-        [name]: value
+        email : evt.target.value
       });
-  }
+    }
+
+    updatePassword(evt) {
+    this.setState({
+        password : evt.target.value
+      });
+    }
 
     handleSubmit(e) {
       e.preventDefault();
@@ -33,7 +39,7 @@ class SignUpForm extends Component {
         password: this.state.password
 
       };
-      console.log(newRow)
+      console.log(newstudent)
   axios.post('http://localhost:9000/signup', newstudent)
   .then((res) => {
       console.log(res.data)
@@ -44,18 +50,18 @@ class SignUpForm extends Component {
 }
     render() {
         return (
-          <div className="FormCenter" style={h1}>
-          <form className="FormFields" method="POST"  action='/signup'>
+          <div className="sign" style={h1}>
+          <form onSubmit={this.handleSubmit} className="FormFields">
             <div  className="form-group" style={h3} >
-              <label>E-mail Address : </label>
-              <input  style={h2} type="text"  placeholder="Enter your Email" name='email' />
+              <label className="Form1" htmlFor="name">E-mail Address : </label>
+              <input  style={h2} type="email"  placeholder="Enter your Email" name='email' value={this.state.email} onChange={this.updateemail}  />
             </div>
-            <div style={h3}>
-              <label >Password :</label>
-              <input style={h2} type="password"  placeholder="Enter your password" name="password" />
+            <div  className="Form1" style={h3}>
+            <label className="Label1" htmlFor="password">Password</label>
+                <input  style={h2} type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.updatePassword} />
             </div>
             <div >
-            <button style={h4}  className="Button1" type='submit' value='sign up'> <Link to="/SignUpform">SignUp</Link></button>
+            <button style={h4} type='submit'> login</button>
             </div>
 </form>
         </div>
