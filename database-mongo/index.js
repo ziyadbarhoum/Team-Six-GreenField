@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/teachersDataBase');
+mongoose.connect('mongodb+srv://ziyadbarhoum:1234@teacherdata.fevez.mongodb.net/teacherData?retryWrites=true&w=majority');
 
 var Schema= mongoose.Schema;
 // connect data base and check the connection
