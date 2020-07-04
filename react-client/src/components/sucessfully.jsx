@@ -18,7 +18,7 @@ class Sucess extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
           <div className="Form1">
-          <button className="Button1">Home</button>
+          <Link to="/see">   <button className="Button1">Home</button></Link>
       </div>
     </form>
   </div>

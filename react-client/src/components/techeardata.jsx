@@ -52,7 +52,9 @@ return (
 
         </div>
         <div>
-        <Link to="/student">   <button style={h6}className="Button1">Esc</button></Link>
+
+        <Link to="/tech"> <button style={h6}className="Button1">Esc</button></Link>
+
          </div>
 </div>
 
