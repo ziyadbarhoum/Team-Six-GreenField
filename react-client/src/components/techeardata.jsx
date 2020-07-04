@@ -19,7 +19,7 @@ this.state= {
   }
   componentDidMount(){
     var x = this;
-    axios.get('http://localhost:9000/ret')
+    axios.get('http://localhost:9000/findOne')
     .then((res) => {
       this.setState({techeardata:res.data})
         console.log(res.data)

@@ -20,7 +20,7 @@ class TeacherForm extends Component {
             email:'',
             description:''
         };
-        
+
         this.updateName= this.updateName.bind(this);
         this.updateSubject= this.updateSubject.bind(this);
         this.updatePlace= this.updatePlace.bind(this);
@@ -92,6 +92,8 @@ class TeacherForm extends Component {
       console.log(newRow)
   axios.post('http://localhost:9000/mainForm', newRow)
   .then((res) => {
+    alert(' Your record inserted successfully')
+    this.props.history.push('/see')
       console.log(res.data)
   }).catch((error) => {
       console.log(error)

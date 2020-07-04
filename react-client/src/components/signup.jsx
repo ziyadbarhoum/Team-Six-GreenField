@@ -46,10 +46,13 @@ class SignUpForm extends Component {
 
       // return  <Redirect  to="/see" />
       console.log(this.props);
-      this.props.history.push('/see')}
+      this.props.history.push('/SignUpform')}else{
+        alert(' TRY AGAIN!!!')
+      }
 
 
   }).catch((error) => {
+
       console.log(error)
   });
 }

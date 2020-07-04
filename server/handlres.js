@@ -47,6 +47,7 @@ module.exports = {
         });
       } else {
         res.send("User already exists...");
+        
       }
     })
     .catch(err => {
@@ -100,6 +101,7 @@ login:function (req, res)  {
 	},
 	 showSpecificTeacher: function(req, res)  {
        var toShow= req.body
+       console.log(toShow)
 		ADV3.find(toShow,function(err, teachers)  {
 			if(err){
 				throw err;
