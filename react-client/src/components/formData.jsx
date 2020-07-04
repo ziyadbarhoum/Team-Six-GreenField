@@ -136,6 +136,9 @@ class TeacherForm extends Component {
             <div className="FormField" style={h3}>
             <button style={h4} type='submit'>Submit</button>
             </div>
+            <div className="FormField" style={h3}>
+           <Link to="/tech">  <button style={h5}>Skip</button></Link>
+            </div>
           </form>
         </div>
         );
@@ -188,6 +191,23 @@ cursor: "cursor",
  textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
  position: "absolute",
  top: "95%",
- left: "35%",
+ left: "45%",
 }
+const h5={
+  cursor: "cursor",
+   display: "inline-block",
+   background: "#FFFFFF",
+   border: "1px solid #1D606C",
+   borderWidth: "1px 1px 1px 1px",
+     borderRadius: "10px",
+   padding: "10px 20px 10px 20px",
+   fontSize: "20px",
+   fontFamily: "cursive",
+   fontWeight: "900",
+   fontStyle: "italic",
+   textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+   position: "absolute",
+   top: "95%",
+   left: "20%",
+  }
 export default TeacherForm;

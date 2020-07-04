@@ -19,6 +19,8 @@ import {
   import SearchTe from './components/searchteach.jsx';
   import SignUpForm from './components/signup.jsx';
   import Sucess  from './components/sucessfully.jsx';
+import Search1 from './components/searchteach.jsx';
+
 
 
   // import First from './components/formdata.jsx';
@@ -47,11 +49,13 @@ import First from './components/techeardata.jsx';
           </div>
               <Route  path="/student" component={SearchPage}>
               </Route>
-              <Route  path="/studentf">
-              <StudentForm/>
+              <Route  path="/studentf" component={StudentForm}>
+
               </Route>
 
+              <Route  path="/tech" component={Search1}>
 
+              </Route>
               <Route path="/teacher" component={SignInSignUpForm}>
               </Route>
 
@@ -59,7 +63,7 @@ import First from './components/techeardata.jsx';
               <Route path="/teacherForm" component={SignUpForm}>
               </Route>
               <Route path="/view"component={First} >
-              
+
               </Route>
 
               <Route path="/SignUpform"component={TeacherForm}>

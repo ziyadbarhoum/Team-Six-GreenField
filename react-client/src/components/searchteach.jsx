@@ -1,9 +1,6 @@
-
 import React, { Component } from 'react';
-import First from './techeardata.jsx';
-
-
 import axios from "axios";
+import First from './techeardata.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,74 +9,70 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-
-export default class SearchTe extends React.Component {
-  render () {
-    return (
-    <div>
-    <Search1/>
-    <View1/>
-
- </div>);
+export default class SearchPage extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      place:'',
+      Subject:''
+    };
+    this.updatePlace= this.updatePlace.bind(this);
+    this.updateSubject= this.updateSubject.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-}
-class Search1 extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {value: 'Amman'};
-
-    this.handleChange = this.handleChange.bind(this);
-
-  }
-
-
-  handleChange(e) {
-    let {name, value} = e.target;
+  updatePlace(evt) {
     this.setState({
-      [name]: value
+      place : evt.target.value
     });
-}
-
+  }
+  updateSubject(evt) {
+    this.setState({
+      Subject : evt.target.value
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    const datasp= {
+      place: this.state.place,
+      Subject: this.state.Subject
+    };
+    axios.post('http://localhost:9000/findOne', datasp)
+    .then((res) => {
+        console.log(res.data)
+        this.props.history.push('/view')
+    }).catch((error) => {
+        console.log(error)
+    });
+  }
   render() {
     return (
-      <form style={h1}>
-        <label style={h3}>
-        City:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="Amman">Amman</option>
-            <option value="Karak">Karak</option>
-            <option value="Zarqa">Zarqa</option>
-            <option value="Irbid">Irbid</option>
-          </select>
-        </label> <br/>
-        <label style={h3}>
-      Subject:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="Math">Math</option>
-            <option value="English">English</option>
-            <option value="Arabic">Arabic</option>
-            <option value="Science">Science</option>
-          </select>
-        </label>
-      </form>
+      <div className="FormCenter" style={h1}>
+      <form onSubmit={this.handleSubmit} className="FormFields">
+<div className="FormField" style={h3}>
+              <label className="Form1" htmlFor="place">Place</label>
+              <input type="place" id="place"  style={h2}className="Input1" placeholder="Enter your place" name="place" value={this.state.place} onChange={this.updatePlace} />
+            </div>
+            <div className="FormField" style={h3}>
+              <label className="FormField__Label" htmlFor="subject">Subject</label>
+              <input type="subject" id="subject" style={h2} className="Input1" placeholder="Enter your subject" name="subject" value={this.state.subject} onChange={this.updateSubject} />
+            </div>
+
+      <div >
+            <button style={h4} type='submit'>View</button>
+            </div>
+            </form>
+        </div>
 
     );
   }
 }
-
-
-class View1 extends React.Component{
-  render(){
-    return(
-
-
-      <button style={h4} ><Link to="/view">View</Link></button>
-
-
-
-    )
-  }
-}
+// class View extends React.Component{
+//   render(){
+//     return(
+//       <button  style={h4}><Link to="/view">View</Link></button>
+//     )
+//   }
+// }
 const h1={
   "border-radius": "5px",
  "background-color": "#F2F2F2",
@@ -131,3 +124,6 @@ cursor: "cursor",
  top: "80%",
  left: "45%",
 }
+
+
+

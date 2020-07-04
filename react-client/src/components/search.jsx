@@ -38,7 +38,8 @@ export default class SearchPage extends React.Component {
     };
     axios.post('http://localhost:9000/findOne', datasp)
     .then((res) => {
-        console.log(res.data)
+        this.props.history.push('/view')
+        console.log(datasp)
     }).catch((error) => {
         console.log(error)
     });
@@ -57,7 +58,7 @@ export default class SearchPage extends React.Component {
             </div>
 
       <div >
-            <button style={h4} type='submit'> <Link to="/view">View</Link></button>
+            <button style={h4} type='submit'>View</button>
             </div>
             </form>
         </div>
