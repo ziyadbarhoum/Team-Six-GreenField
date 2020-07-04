@@ -1,9 +1,6 @@
-
 import React, { Component } from 'react';
 import axios from "axios";
-
 import First from './techeardata.jsx';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,20 +9,16 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-
 export default class SearchPage extends React.Component {
-
   constructor() {
     super();
     this.state = {
       place:'',
       Subject:'',
     };
-
     this.updatePlace= this.updatePlace.bind(this);
     this.updateSubject= this.updateSubject.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
   updatePlace(evt) {
     this.setState({
@@ -37,23 +30,18 @@ export default class SearchPage extends React.Component {
       Subject : evt.target.value
     });
   }
-
-
-
   handleSubmit(e) {
     e.preventDefault();
     const datasp= {
       place: this.state.place,
       Subject: this.state.Subject
-
     };
-    axios.post('http://localhost:9000/findOne"', datasp)
+    axios.get('http://localhost:9000/showTeachers', datasp)
     .then((res) => {
         console.log(res.data)
     }).catch((error) => {
         console.log(error)
     });
-
   }
   render() {
     return (
@@ -76,28 +64,17 @@ export default class SearchPage extends React.Component {
           <option Subject="Science">Science</option>
         </select>
       </label>
-
       <div >
             <button style={h4} type='submit'> <Link to="/view">View</Link></button>
             </div>
-
-
     </form>
-
     );
   }
 }
-
-
 // class View extends React.Component{
 //   render(){
 //     return(
-
-
 //       <button  style={h4}><Link to="/view">View</Link></button>
-
-
-
 //     )
 //   }
 // }
@@ -152,3 +129,6 @@ cursor: "cursor",
  top: "80%",
  left: "45%",
 }
+
+
+

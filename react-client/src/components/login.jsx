@@ -48,13 +48,12 @@ class LoginForm extends Component {
       console.log(newstudent)
   axios.post('http://localhost:9000/login', newstudent)
   .then((res) => {
-    if(res.data === "User authenticated"){
-      window.location='/SignUpform'
-
+    // if(res.data === "User authenticated"){
+    //   // window.location='/SignUpform'
       // return <Redirect to='/SignUpform' />
-      console.log(res.data)
-    }
 
+    // }
+      console.log(res.data)
   }).catch((error) => {
       console.log(error)
   });
@@ -75,7 +74,8 @@ class LoginForm extends Component {
               </div>
 
             <div >
-            <button style={h4} type='submit'> login</button>
+            <Link to="/student"> <button style={h4} type='submit'> login</button>
+            </Link>
             </div>
           </form>
         </div>

@@ -11,15 +11,15 @@ import {
 } from "react-router-dom";
 
 export default class First extends React.Component {
-  constructor (props){
-    super(props);
+  constructor (){
+    super();
 this.state= {
   techeardata:[]
 }
   }
   componentDidMount(){
     var x = this;
-    axios.get('http://localhost:9000/findOne')
+    axios.get('http://localhost:9000/ret')
     .then((res) => {
       this.setState({techeardata:res.data})
         console.log(res.data)
@@ -32,22 +32,29 @@ this.state= {
       console.log(data)
 return (
   // var data =this.state.teacherdata;
+<div>
   <div style={h1}>
         {data.map(function(d, idx){
            return (
              <ul style={h5} key={d._id}>
-             <p style={h3}>{d.name}</p>
-             <p style={h3}>{d.phone}</p>
+             <h1 style={h3}>{d.name}</h1>
+             {/* <p style={h3}>{d.phone}</p> */}
              <p style={h3}>{d.price}</p>
-             <p style={h3}>{d.email}</p>
+             {/* <p style={h3}>{d.email}</p> */}
              <p style={h3}>{d.subject}</p>
              <p style={h3}>{d.description}</p>
              <button style={h3} > <Link to="/studentf">
              book</Link></button>
              </ul>
+
               )
          })}
+
         </div>
+        <div>
+        <Link to="/student">   <button style={h4}className="Button1">Cancle</button></Link>
+         </div>
+</div>
 
       );
     }
@@ -86,6 +93,23 @@ return (
    "margin-top":" 50px",
    "margin-left":" 50px",
  }
+ const h4={
+  cursor: "cursor",
+   display: "inline-block",
+   background: "#FFFFFF",
+   border: "1px solid #1D606C",
+   borderWidth: "1px 1px 1px 1px",
+     borderRadius: "10px",
+   padding: "10px 20px 10px 20px",
+   fontSize: "20px",
+   fontFamily: "cursive",
+   fontWeight: "900",
+   fontStyle: "italic",
+   textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+   position: "absolute",
+   top: "100%",
+   left: "15%",
+  }
 
 
 // var teachers={techeardata};

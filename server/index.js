@@ -1,3 +1,7 @@
+
+
+
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var handlers = require('./handlres.js')
@@ -10,6 +14,7 @@ app.post('/login', handlers.login)
 app.get('/login', handlers.login)
 app.get('/ret', handlers.showTeachers)
 app.post('/mainForm', handlers.addTeacher)
+app.get('/mainForm', handlers.addTeacher)
 app.post('/findOne', handlers.showSpecificTeacher)
 app.post('/sendemail', handlers.sendEmail)
 app.post('/logout', handlers.logout)
