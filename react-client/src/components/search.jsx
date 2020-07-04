@@ -39,6 +39,7 @@ export default class SearchPage extends React.Component {
     axios.post('http://localhost:9000/findOne', datasp)
     .then((res) => {
         this.props.history.push('/view')
+        console.log(datasp)
     }).catch((error) => {
         console.log(error)
     });
