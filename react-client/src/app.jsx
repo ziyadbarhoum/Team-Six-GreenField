@@ -58,15 +58,15 @@ import First from './components/techeardata.jsx';
 
               <Route path="/teacherForm" component={SignUpForm}>
               </Route>
-              <Route path="/view" >
-              <First/>
+              <Route path="/view"component={First} >
+              
               </Route>
 
-              <Route path="/SignUpform">
-            <TeacherForm/>
+              <Route path="/SignUpform"component={TeacherForm}>
+
           </Route>
-          <Route path="/see">
-            <SearchTe/>
+          <Route path="/see" component={SearchTe}>
+
           </Route>
           <Route path="/loginform" component={LoginForm}>
           </Route>
