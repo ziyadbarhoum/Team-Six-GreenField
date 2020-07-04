@@ -11,7 +11,7 @@ require('dotenv').config()
 // import models from DB
 var items = require('../database-mongo');
 var Autho = items.Autho;
-// var ADV=items.ADV2;
+var ADV3=items.ADV3;
 //log out
 const passport = require('passport');
 //const passportHttp = require('passport-http');
@@ -35,7 +35,10 @@ module.exports = {
              newUser
               .save()
               .then(() => {
-                res.redirect('/login');
+                // res.redirect('/login');
+
+                res.send('User authenticated');
+
               })
               .catch(err => {
                 console.log("Error is ", err.message);
@@ -66,7 +69,7 @@ login:function (req, res)  {
             if (err) {
               console.log("Error is", err.message);
             } else if (result == true) {
-              res.send("User authenticated");
+              res.send("User login");
             } else {
               res.send("User Unauthorized Access");
             }
@@ -88,7 +91,7 @@ login:function (req, res)  {
     });
   },
   showTeachers: function(req, res)  {
-		items.ADV3.find(function(err, teachers)  {
+		ADV3.find(function(err, teachers)  {
 			if(err){
 				throw err;
 			}
@@ -105,19 +108,19 @@ login:function (req, res)  {
 		});
 	},
 addTeacher:function(req,res){
-	var phone = req.body.phone;
+	var phoneNum = req.body.phoneNum;
 	var name = req.body.name;
 	var price = req.body.price;
-	var email = req.body.email;
-	var description = req.body.description;
+	var Email = req.body.Email;
+	var Discription = req.body.Discription;
 	var place = req.body.place;
 	var subject = req.body.subject;
-	const newAdv= new items.ADV3({
-		phone,
+	const newAdv= new ADV3({
+		phoneNum,
 		name,
 		price,
-		email,
-		description,
+		Email,
+		Discription,
 		place,
 		subject
 	})
@@ -127,9 +130,9 @@ addTeacher:function(req,res){
 	    .catch(err=> res.status(400).json('Error:'+err))
 },
 sendEmail:function(req,res){
-var name=req.body.name
+var username=req.body.userName
 var email=req.body.email
-var phone=req.body.phone
+var phoneNumber=req.body.phoneNumber
 // Step 1
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -143,7 +146,7 @@ let mailOptions = {
     from: email ,
     to: 'blackmak21@gmail.com',
     subject: 'There is Student want to contact you !!',
-    text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ name+'\n Phone Number :' +phone +'\n Email :'+email
+    text: 'Hi  there !! there is student intrested with you ADV \n please contact him/her \n Contact Informations : \n Name :'+ username+'\n Phone Number :' +phoneNumber +'\n Email :'+email
 };
 // Step 3
 transporter.sendMail(mailOptions, (err, data) => {

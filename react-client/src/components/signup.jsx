@@ -9,6 +9,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import {Redirect} from 'react-router-dom';
 class SignUpForm extends Component {
     constructor() {
         super();
@@ -25,28 +26,32 @@ class SignUpForm extends Component {
         email : evt.target.value
       });
     }
-
     updatePassword(evt) {
     this.setState({
         password : evt.target.value
       });
     }
-
     handleSubmit(e) {
+      console.log(this, 'I am from signup ')
+
       e.preventDefault();
       const newstudent= {
         email: this.state.email,
         password: this.state.password
-
       };
-      console.log(newstudent)
   axios.post('http://localhost:9000/signup', newstudent)
   .then((res) => {
-      console.log(res.data)
+    console.log(res.data);
+    if(res.data === "User authenticated"){
+
+      // return  <Redirect  to="/see" />
+      console.log(this.props);
+      this.props.history.push('/see')}
+
+
   }).catch((error) => {
       console.log(error)
   });
-
 }
     render() {
         return (
@@ -118,10 +123,3 @@ cursor: "cursor",
  left: "35%",
 }
 export default SignUpForm;
-
-
-
-
-
-
-

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import TeacherForm from './formData.jsx';
 import axios from "axios";
 import {
@@ -10,6 +9,8 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import {Redirect} from 'react-router-dom';
+
 class LoginForm extends Component {
     constructor() {
         super();
@@ -37,28 +38,27 @@ class LoginForm extends Component {
     }
 
 
-    handleSubmit(e) {
+  handleSubmit(e) {
+    console.log(this, 'I am from login ')
       e.preventDefault();
       const newstudent= {
         email: this.state.email,
         password: this.state.password
-
-
       };
-      console.log(newstudent)
   axios.post('http://localhost:9000/login', newstudent)
   .then((res) => {
-    if(res.data === "User authenticated"){
-      window.location='/SignUpform'
+    console.log(res.data);
+    if(res.data === "User login"){
 
-      // return <Redirect to='/SignUpform' />
-      console.log(res.data)
-    }
+      // return  <Redirect  to="/see" />
+
+console.log(this.props)
+      this.props.history.push('/see')}
+
 
   }).catch((error) => {
       console.log(error)
   });
-
 }
     render() {
         return (
@@ -75,7 +75,8 @@ class LoginForm extends Component {
               </div>
 
             <div >
-            <button style={h4} type='submit'> login</button>
+             <button style={h4} type='submit'> login</button>
+
             </div>
           </form>
         </div>

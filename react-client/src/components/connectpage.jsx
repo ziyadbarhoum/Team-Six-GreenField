@@ -73,9 +73,9 @@ class StudentForm extends Component {
                 <input  style={h2} type="email" id="email" className="Input1" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.updateemail} />
               </div>
               <div className="FormField">
-                  <button  style={h5} className="Button1" type="submit">Submit</button>
+                  <button  style={h5} className="Button1" type="submit">Book </button>
 
-                  <button style={h4}className="Button1">Cancle</button>
+                  <button style={h4}className="Button1"><Link to="/view">Cancle</Link></button>
               </div>
             </form>
           </div>

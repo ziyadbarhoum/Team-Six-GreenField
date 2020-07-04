@@ -27,43 +27,6 @@ const authoSchema =new Schema({
 });
 
 
-// var teacherSchema= new Schema({
-//       phoneNum : Number,
-//       name : { type: String, required: true },
-//       price :{ type: String, required: true},
-//       Email :{ type: String,  unique: true },
-//       Discription:String,
-//       place: String ,
-//       subject: String ,
-//       create_date:{ type: Date, default: Date.now }
-//   });
-// create Adv schema contain advertising
-
-// var AdvSchema2= new Schema({
-//       phoneNum : Number,
-//       name : { type: String, required: true },
-//       price :{ type: String, required: true},
-//       Email : String,
-//       Discription:String,
-//       place: String ,
-//       subject: String ,
-//       create_date:{ type: Date, default: Date.now }
-//   });
-//create models
-// const ADV2 = mongoose.model('ADV2', AdvSchema2);
-// const Teacher = mongoose.model('Teacher', teacherSchema);
-
-// var AdvSchema2= new Schema({
-//   phone : Number,
-//   name : { type: String, required: true },
-//   price :{ type: String, required: true},
-//   email : String,
-//   description:String,
-//   place: String ,
-//   subject: String ,
-//   create_date:{ type: Date, default: Date.now }
-// });
-// const ADV2 = mongoose.model('ADV2', AdvSchema2);
 
 var AdvSchema3= new Schema({
   phone : Number,

@@ -18,6 +18,8 @@ import {
   import SearchPage from './components/search.jsx';
   import SearchTe from './components/searchteach.jsx';
   import SignUpForm from './components/signup.jsx';
+  import Sucess  from './components/sucessfully.jsx';
+
 
   // import First from './components/formdata.jsx';
 import First from './components/techeardata.jsx';
@@ -66,8 +68,10 @@ import First from './components/techeardata.jsx';
           <Route path="/see">
             <SearchTe/>
           </Route>
-          <Route path="/loginform">
-            <LoginForm/>
+          <Route path="/loginform" component={LoginForm}>
+          </Route>
+          <Route path="/Sucess">
+            <Sucess/>
           </Route>
 
           </div>
