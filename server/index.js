@@ -21,7 +21,7 @@ app.post('/logout', handlers.logout)
 app.get('/', (req, res) => {
   res.status(200).send('Success');
 });
-var port = process.env.port || 9000;
+var port = process.env.PORT|| 9000;
 app.listen(port, function() {
   console.log('listening on port 9000!');
 });
