@@ -68,8 +68,7 @@ import First from './components/techeardata.jsx';
           <Route path="/see">
             <SearchTe/>
           </Route>
-          <Route path="/loginform">
-            <LoginForm/>
+          <Route path="/loginform" component={LoginForm}>
           </Route>
           <Route path="/Sucess">
             <Sucess/>

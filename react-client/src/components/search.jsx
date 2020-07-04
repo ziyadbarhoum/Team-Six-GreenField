@@ -36,7 +36,7 @@ export default class SearchPage extends React.Component {
       place: this.state.place,
       Subject: this.state.Subject
     };
-    axios.get('http://localhost:9000/showTeachers', datasp)
+    axios.post('http://localhost:9000/showTeachers', datasp)
     .then((res) => {
         console.log(res.data)
     }).catch((error) => {
@@ -45,29 +45,23 @@ export default class SearchPage extends React.Component {
   }
   render() {
     return (
-      <form  style={h1}>
-      <label style={h3}>
-      City:
-        <select name='place' value={this.state.place} onChange={this.updatePlace}>
-          <option place="Amman">Amman</option>
-          <option place="Karak">Karak</option>
-          <option place="Zarqa">Zarqa</option>
-          <option place="Irbid">Irbid</option>
-        </select>
-      </label> <br/>
-      <label style={h3}>
-    Subject:
-        <select name='place' value={this.state.Subject} onChange={this.updateSubject}>
-          <option Subject="Math">Math</option>
-          <option Subject="English">English</option>
-          <option Subject="Arabic">Arabic</option>
-          <option Subject="Science">Science</option>
-        </select>
-      </label>
+      <div className="FormCenter" style={h1}>
+      <form onSubmit={this.handleSubmit} className="FormFields">
+<div className="FormField" style={h3}>
+              <label className="Form1" htmlFor="place">Place</label>
+              <input type="place" id="place"  style={h2}className="Input1" placeholder="Enter your place" name="place" value={this.state.place} onChange={this.updatePlace} />
+            </div>
+            <div className="FormField" style={h3}>
+              <label className="FormField__Label" htmlFor="subject">Subject</label>
+              <input type="subject" id="subject" style={h2} className="Input1" placeholder="Enter your subject" name="subject" value={this.state.subject} onChange={this.updateSubject} />
+            </div>
+
       <div >
             <button style={h4} type='submit'> <Link to="/view">View</Link></button>
             </div>
-    </form>
+            </form>
+        </div>
+
     );
   }
 }

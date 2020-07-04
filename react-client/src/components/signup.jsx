@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import TeacherForm from './formData.jsx';
-import SearchPage from './search.jsx';
-
-
 import axios from "axios";
 import {
   BrowserRouter as Router,
@@ -12,6 +9,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import {Redirect} from 'react-router-dom';
 class SignUpForm extends Component {
     constructor() {
         super();
@@ -28,35 +26,33 @@ class SignUpForm extends Component {
         email : evt.target.value
       });
     }
-
     updatePassword(evt) {
     this.setState({
         password : evt.target.value
       });
     }
-
     handleSubmit(e) {
+      console.log(this, 'I am from signup ')
+
       e.preventDefault();
       const newstudent= {
         email: this.state.email,
         password: this.state.password
-
       };
-      console.log(newstudent)
   axios.post('http://localhost:9000/signup', newstudent)
   .then((res) => {
-      console.log(res.data)
-      history.pushState ( './search.jsx')
-  })
-//   .then((res) => {
-//     window.location = '/login';
-// })
-.catch((error) => {
+    console.log(res.data);
+    if(res.data === "User authenticated"){
+
+      // return  <Redirect  to="/see" />
+      console.log(this.props);
+      this.props.history.push('/see')}
+
+
+  }).catch((error) => {
       console.log(error)
   });
-
 }
-//
     render() {
         return (
           <div className="sign" style={h1}>
@@ -70,10 +66,7 @@ class SignUpForm extends Component {
                 <input  style={h2} type="password" id="password" className="Input1" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.updatePassword} />
             </div>
             <div >
-              
-               <Link to="/student"> <button style={h4} type='submit'>signup</button>
-            </Link>
-
+            <button style={h4} type='submit'> signup</button>
             </div>
 </form>
         </div>
@@ -130,10 +123,3 @@ cursor: "cursor",
  left: "35%",
 }
 export default SignUpForm;
-
-
-
-
-
-
-
