@@ -19,7 +19,7 @@ this.state= {
   }
   componentDidMount(){
     var x = this;
-    axios.get('http://localhost:9000/ret')
+    axios.get('http://localhost:9000/findOne')
     .then((res) => {
       this.setState({techeardata:res.data})
         console.log(res.data)
@@ -52,7 +52,9 @@ return (
 
         </div>
         <div>
-        <Link to="/student">   <button style={h6}className="Button1">Esc</button></Link>
+
+        <Link to="/tech"> <button style={h6}className="Button1">Esc</button></Link>
+
          </div>
 </div>
 

@@ -14,7 +14,7 @@ export default class SearchPage extends React.Component {
     super();
     this.state = {
       place:'',
-      Subject:'',
+      Subject:''
     };
     this.updatePlace= this.updatePlace.bind(this);
     this.updateSubject= this.updateSubject.bind(this);
@@ -36,9 +36,10 @@ export default class SearchPage extends React.Component {
       place: this.state.place,
       Subject: this.state.Subject
     };
-    axios.post('http://localhost:9000/showTeachers', datasp)
+    axios.post('http://localhost:9000/findOne', datasp)
     .then((res) => {
-        console.log(res.data)
+        this.props.history.push('/view')
+        console.log(datasp)
     }).catch((error) => {
         console.log(error)
     });
@@ -57,7 +58,7 @@ export default class SearchPage extends React.Component {
             </div>
 
       <div >
-            <button style={h4} type='submit'> <Link to="/view">View</Link></button>
+            <button style={h4} type='submit'>View</button>
             </div>
             </form>
         </div>

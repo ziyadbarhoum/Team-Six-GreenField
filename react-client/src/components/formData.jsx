@@ -20,7 +20,7 @@ class TeacherForm extends Component {
             email:'',
             description:''
         };
-        
+
         this.updateName= this.updateName.bind(this);
         this.updateSubject= this.updateSubject.bind(this);
         this.updatePlace= this.updatePlace.bind(this);
@@ -92,6 +92,8 @@ class TeacherForm extends Component {
       console.log(newRow)
   axios.post('http://localhost:9000/mainForm', newRow)
   .then((res) => {
+    alert(' Your record inserted successfully')
+    this.props.history.push('/see')
       console.log(res.data)
   }).catch((error) => {
       console.log(error)
@@ -133,6 +135,9 @@ class TeacherForm extends Component {
             </div>
             <div className="FormField" style={h3}>
             <button style={h4} type='submit'>Submit</button>
+            </div>
+            <div className="FormField" style={h3}>
+           <Link to="/tech">  <button style={h5}>Skip</button></Link>
             </div>
           </form>
         </div>
@@ -186,6 +191,23 @@ cursor: "cursor",
  textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
  position: "absolute",
  top: "95%",
- left: "35%",
+ left: "45%",
 }
+const h5={
+  cursor: "cursor",
+   display: "inline-block",
+   background: "#FFFFFF",
+   border: "1px solid #1D606C",
+   borderWidth: "1px 1px 1px 1px",
+     borderRadius: "10px",
+   padding: "10px 20px 10px 20px",
+   fontSize: "20px",
+   fontFamily: "cursive",
+   fontWeight: "900",
+   fontStyle: "italic",
+   textShadow: "0px -1px 0px rgba(0,0,0,0.4)",
+   position: "absolute",
+   top: "95%",
+   left: "20%",
+  }
 export default TeacherForm;
